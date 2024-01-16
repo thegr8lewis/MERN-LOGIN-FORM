@@ -1,4 +1,8 @@
+require('dotenv').config()
+
 const express = require('express')
+const mongoose = require('mongoose')
+const userRoutes = require('./routes/usersroutes')
 
 //start the application 
 const app = express()
@@ -13,11 +17,20 @@ app.use((req,res,next) =>{
 
 
 //react for requests
-app.get('/', (req,res) =>{
-    res.json({msg: ' welcome to the app'})
-})
+app.use('/api/users', userRoutes)
 
-//listen for request
-app.listen(4000, () =>{
-    console.log('listening for request from port 4000')
-})
+
+//connect to db
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        
+        //listen for request
+        app.listen(process.env.PORT, () =>{
+            console.log('listening for request from port',process.env.PORT)
+        })
+      
+    })
+    .catch((error) =>{
+        console.log(error)
+    })
+
