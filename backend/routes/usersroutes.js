@@ -1,34 +1,47 @@
-const express = require('express')
+const express = require('express');
+const bodyParser = require('body-parser');
+const User = require('../models/usersModels');
 
-//instance of the router 
-const router = express.Router()
+// instance of the router
+const router = express.Router();
 
+// Parse application/x-www-form-urlencoded
+router.use(bodyParser.urlencoded({ extended: false }));
 
-//get all users
-router.get('/',(req,res) =>{
-    res.json({msg:'Get all users'})
-})
+// Parse application/json
+router.use(bodyParser.json());
 
-//get a single user
-router.get('/:id',(req,res) =>{
-    res.json({msg:'Get a single user'})
-})
+// get all users
+router.get('/', (req, res) => {
+  res.json({ msg: 'Get all users' });
+});
 
-//create a new user
-router.post('/',(req,res) =>{
-    res.json({msg:'Create a new user'})
-})
+// get a single user
+router.get('/:id', (req, res) => {
+  res.json({ msg: 'Get a single user' });
+});
 
+// post a new user
+router.post('/', async (req, res) => {
+  const { name, location, age, id } = req.body;
 
-//delete a user
-router.delete('/:id',(req,res) =>{
-    res.json({msg:'delete a user'})
-})
+  try {
+    const user = await User.create({ name, location, age, id });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
-//update a user
-router.patch('/:id',(req,res) =>{
-    res.json({msg:'update a user'})
-})
+// delete a user
+router.delete('/:id', (req, res) => {
+  res.json({ msg: 'Delete a user' });
+});
 
-//export router
-module.exports= router
+// update a user
+router.patch('/:id', (req, res) => {
+  res.json({ msg: 'Update a user' });
+});
+
+// export router
+module.exports = router;
