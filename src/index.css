@@ -350,3 +350,91 @@ transition: 1s ease;
   font-size: 15px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+/* CONTACT US */
+.contact{
+  position: relative;
+	width:100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+  background-color: #d6d8db;
+}
+.contact-container{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-left{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+}
+.contact-left-title h2{
+  font-weight: 600;
+  color: #2c4a75;
+  font-size: 40px;
+  margin-bottom: 5px;
+
+}
+
+.contact-left-title hr{
+  border: none;
+  width: 120px;
+  height: 5px;
+  background-color: #021024;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.contact-inputs{
+  width: 400px;
+  height: 50px;
+  border: 2px solid grey;
+  padding-left: 25px;
+  font-weight: 500;
+  color: rgb(10, 10, 10);
+  border-radius: 50px;
+}
+
+.contact-left textarea{
+  height: 200px;
+  padding-top: 15px;
+  border-radius: 20px;
+}
+
+.contact-inputs:focus{
+  border: 2px solid rgb(219, 147, 13);
+
+}
+
+.contact-inputs::placeholder{
+  color: rgb(36, 35, 35);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #2c4a75;
+}
+
+.contact-left button{
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  font-size: 16px;
+  color: white;
+  gap: 10px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(270deg, #2c4a75,#d6d8db);
+  cursor: pointer;
+}
+
+@media (max-width:700px) {
+  .contact-inputs {
+    width: 80vw;
+  }
+  
+}
+
